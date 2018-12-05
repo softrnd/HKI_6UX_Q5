@@ -1,0 +1,14 @@
+README : 
+
+1. Create a new build directory : 
+	DISTRO=fsl-imx-fb MACHINE=imx6ull14x14evk source fsl-setup-release.sh -b build2
+2. Append the following line to build2/conf/bblayers.conf :
+	BBLAYERS += " ${BSPDIR}/sources/meta-qt4 "
+3. Run :
+	bitbake-layers show-recipes
+   This command should display all the available recipes. Ensure that 'qt4e-demo-image' recipe is present.
+   
+4. Run :
+	bitbake -k qt4e-demo-image
+	
+5. Flash the images available at temp/deploy/images/ and see if it works on the target platform
